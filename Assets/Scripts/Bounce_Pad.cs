@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bounce_Pad : MonoBehaviour
 {
     public float bounceStrength;
-
+    public ParticleSystem pS;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player")
@@ -13,7 +13,7 @@ public class Bounce_Pad : MonoBehaviour
             Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 dir = transform.up * bounceStrength;
             rb.AddForce(dir, ForceMode.Impulse);
-
+            pS.Play();
         }
     }
 
